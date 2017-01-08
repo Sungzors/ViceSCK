@@ -5,16 +5,16 @@ package com.example.sungwon.vicenews;
  */
 public class NewsDetail {
     private String title;
-    private String body;
     private String url;
-    NewsImage[] media = new NewsImage[1];
+
+    public NewsImage[] getMultimedia() {
+        return multimedia;
+    }
+
+    NewsImage[] multimedia = new NewsImage[2];
 
     public String getUrl() {
         return url;
-    }
-
-    public String getBody() {
-        return body;
     }
 
     public String getTitle() {

@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ViceDBHelper extends SQLiteOpenHelper{
     //instantiating database
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     private static final String DATABASE_NAME = "ViceNews.db";
     //instantiating columns in database
     public static final String DATABASE_TABLE_NAME_LATEST = "getlatest";
@@ -20,12 +20,10 @@ public class ViceDBHelper extends SQLiteOpenHelper{
     public static final String DATABASE_TABLE_NAME_CATEGORY = "category";
     public static final String VICENEWS_COLUMN_ID = "_id";
     public static final String VICENEWS_TITLE = "title";
-    public static final String VICENEWS_AUTHOR = "author";
-    public static final String VICENEWS_BODY = "body";
-    public static final String VICENEWS_PREVIEW = "preview";
-    public static final String VICENEWS_CATEGORY = "category";
-    public static final String VICENEWS_THUMBNAIL = "thumbnail";
-    public static final String [] VICENEWS_COLUMNS = {VICENEWS_COLUMN_ID, VICENEWS_TITLE, VICENEWS_AUTHOR, VICENEWS_BODY, VICENEWS_PREVIEW, VICENEWS_CATEGORY, VICENEWS_THUMBNAIL};
+    public static final String VICENEWS_AUTHOR = "arturl";
+    public static final String VICENEWS_PREVIEW = "largeimgurl";
+    public static final String VICENEWS_THUMBNAIL = "smallimgurl";
+    public static final String [] VICENEWS_COLUMNS = {VICENEWS_COLUMN_ID, VICENEWS_TITLE, VICENEWS_AUTHOR, VICENEWS_PREVIEW, VICENEWS_THUMBNAIL};
 
     public static final String SQL_CREATE_VICENEWS_TABLE_LATEST =
             "CREATE TABLE " + DATABASE_TABLE_NAME_LATEST +
@@ -33,9 +31,7 @@ public class ViceDBHelper extends SQLiteOpenHelper{
                     VICENEWS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     VICENEWS_TITLE + " TEXT," +
                     VICENEWS_AUTHOR + " TEXT," +
-                    VICENEWS_BODY + " TEXT," +
                     VICENEWS_PREVIEW + " TEXT," +
-                    VICENEWS_CATEGORY + " TEXT," +
                     VICENEWS_THUMBNAIL + " TEXT )";
     public static final String SQL_DROP_VICENEWS_TABLE_LATEST = "DROP TABLE IF EXISTS "+ DATABASE_TABLE_NAME_LATEST;
 
@@ -45,9 +41,7 @@ public class ViceDBHelper extends SQLiteOpenHelper{
                     VICENEWS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     VICENEWS_TITLE + " TEXT," +
                     VICENEWS_AUTHOR + " TEXT," +
-                    VICENEWS_BODY + " TEXT," +
                     VICENEWS_PREVIEW + " TEXT," +
-                    VICENEWS_CATEGORY + " TEXT," +
                     VICENEWS_THUMBNAIL + " TEXT )";
     public static final String SQL_DROP_VICENEWS_TABLE_POPULAR = "DROP TABLE IF EXISTS "+ DATABASE_TABLE_NAME_POPULAR;
 
@@ -57,9 +51,7 @@ public class ViceDBHelper extends SQLiteOpenHelper{
                     VICENEWS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     VICENEWS_TITLE + " TEXT," +
                     VICENEWS_AUTHOR + " TEXT," +
-                    VICENEWS_BODY + " TEXT," +
                     VICENEWS_PREVIEW + " TEXT," +
-                    VICENEWS_CATEGORY + " TEXT," +
                     VICENEWS_THUMBNAIL + " TEXT )";
     public static final String SQL_DROP_VICENEWS_TABLE_CATEGORY = "DROP TABLE IF EXISTS "+ DATABASE_TABLE_NAME_CATEGORY;
 
@@ -165,45 +157,45 @@ public class ViceDBHelper extends SQLiteOpenHelper{
     }
 
     //cursor for searching News Article
-    public Cursor searchArticles(String query, String table) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor scursor = null;
-        switch (table) {
-            case "latest":
-
-                scursor = db.query(DATABASE_TABLE_NAME_LATEST,
-                        VICENEWS_COLUMNS,
-                        VICENEWS_TITLE + " LIKE ? OR " + VICENEWS_AUTHOR + " LIKE ? OR " + VICENEWS_CATEGORY + " LIKE ? ",
-                        new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%"},
-                        null,
-                        null,
-                        null);
-
-                break;
-            case "popular":
-
-                scursor = db.query(DATABASE_TABLE_NAME_POPULAR,
-                        VICENEWS_COLUMNS,
-                        VICENEWS_TITLE + " LIKE ? OR " + VICENEWS_AUTHOR + " LIKE ? OR " + VICENEWS_CATEGORY + " LIKE ? ",
-                        new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%"},
-                        null,
-                        null,
-                        null);
-                break;
-            case "category":
-
-                scursor = db.query(DATABASE_TABLE_NAME_CATEGORY,
-                        VICENEWS_COLUMNS,
-                        VICENEWS_TITLE + " LIKE ? OR " + VICENEWS_AUTHOR + " LIKE ? OR " + VICENEWS_CATEGORY + " LIKE ? ",
-                        new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%"},
-                        null,
-                        null,
-                        null);
-                break;
-        }
-            return scursor;
-
-    }
+//    public Cursor searchArticles(String query, String table) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor scursor = null;
+//        switch (table) {
+//            case "latest":
+//
+//                scursor = db.query(DATABASE_TABLE_NAME_LATEST,
+//                        VICENEWS_COLUMNS,
+//                        VICENEWS_TITLE + " LIKE ? OR " + VICENEWS_AUTHOR + " LIKE ? OR " + VICENEWS_CATEGORY + " LIKE ? ",
+//                        new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%"},
+//                        null,
+//                        null,
+//                        null);
+//
+//                break;
+//            case "popular":
+//
+//                scursor = db.query(DATABASE_TABLE_NAME_POPULAR,
+//                        VICENEWS_COLUMNS,
+//                        VICENEWS_TITLE + " LIKE ? OR " + VICENEWS_AUTHOR + " LIKE ? OR " + VICENEWS_CATEGORY + " LIKE ? ",
+//                        new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%"},
+//                        null,
+//                        null,
+//                        null);
+//                break;
+//            case "category":
+//
+//                scursor = db.query(DATABASE_TABLE_NAME_CATEGORY,
+//                        VICENEWS_COLUMNS,
+//                        VICENEWS_TITLE + " LIKE ? OR " + VICENEWS_AUTHOR + " LIKE ? OR " + VICENEWS_CATEGORY + " LIKE ? ",
+//                        new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%"},
+//                        null,
+//                        null,
+//                        null);
+//                break;
+//        }
+//            return scursor;
+//
+//    }
     //cursor for showing News Article details
     public Cursor detailsArticlesLatest(int id){
         SQLiteDatabase db = this.getReadableDatabase();

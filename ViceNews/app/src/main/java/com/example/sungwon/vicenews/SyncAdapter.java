@@ -87,13 +87,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         for (int i = 0; i < newsItemArray.getResults().length; i++) {
                             NewsDetail details = newsItemArray.getResults()[i];
                             values.put("title",details.getTitle());
-                            values.put("author",details.getAuthor());
-                            values.put("body", details.getBody());
-                            values.put("preview", details.getPreview());
-                            values.put("category", details.getCategory());
-                            values.put("thumbnail", details.getThumb());
+                            values.put("arturl",details.getUrl());
+                            values.put("smallimgurl", details.getMultimedia()[0].getUrl());
+                            values.put("largeimgurl", details.getMultimedia()[1].getUrl());
                             mContentResolver.insert(NewsContentProvider.CONTENT_RECENT_URI_FULL, values);
-                            if (i>19){Log.d(TAG, "Story Added: "+details.getTitle());}
                         }
                     }
                 });
@@ -122,11 +119,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         for (int i = 0; i < 30 || i < newsItemArray.getResults().length; i++) {
                             NewsDetail details = newsItemArray.getResults()[i];
                             values.put("title",details.getTitle());
-                            values.put("author",details.getAuthor());
-                            values.put("body", details.getBody());
-                            values.put("preview", details.getPreview());
-                            values.put("category", details.getCategory());
-                            values.put("thumbnail", details.getThumb());
+                            values.put("arturl",details.getUrl());
+                            values.put("smallimgurl", details.getMultimedia()[0].getUrl());
+                            values.put("largeimgurl", details.getMultimedia()[1].getUrl());
                             mContentResolver.insert(NewsContentProvider.CONTENT_POPULAR_URI_FULL, values);
                             if (i>19){Log.d(TAG, "Story Added: "+details.getTitle());}
                         }
@@ -156,12 +151,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 //            TODOne: do value put based on db
                         for (int i = 0; i < newsItemArray.getResults().length; i++) {
                             NewsDetail details = newsItemArray.getResults()[i];
-                            values.put("title", details.getTitle());
-                            values.put("author", details.getAuthor());
-                            values.put("body", details.getBody());
-                            values.put("preview", details.getPreview());
-                            values.put("category", details.getCategory());
-                            values.put("thumbnail", details.getThumb());
+                            values.put("title",details.getTitle());
+                            values.put("arturl",details.getUrl());
+                            values.put("smallimgurl", details.getMultimedia()[0].getUrl());
+                            values.put("largeimgurl", details.getMultimedia()[1].getUrl());
                             mContentResolver.insert(NewsContentProvider.CONTENT_CATEGORY_URI_FULL, values);
                             if (i > 19) {
                                 Log.d(TAG, "Story Added: " + details.getTitle());
