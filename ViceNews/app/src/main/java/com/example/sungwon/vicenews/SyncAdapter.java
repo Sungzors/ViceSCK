@@ -32,6 +32,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     private static String TAG = SyncAdapter.class.getCanonicalName();
 
     ContentResolver mContentResolver;
+    private static final String APIKEY = "9a31996473054cef8734182d5811e043";
 
     private static final String AUTHORITY = "com.example.sungwon.vicenews.NewsContentProvider";
     private static final String STOCKS_TABLE = ViceDBHelper.DATABASE_TABLE_NAME_LATEST;
@@ -70,7 +71,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         SyncHttpClient client = new SyncHttpClient();
 
-        client.get("http://vice.com/api/getlatest/0", null,
+        client.get("http://api.nytimes.com/svc/news/v3/content/all/all/24.json?limit=10&api-key=" + APIKEY, null,
                 new TextHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -102,7 +103,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         SyncHttpClient client = new SyncHttpClient();
 
-        client.get("http://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json?&api-key=9a31996473054cef8734182d5811e043", null,
+        client.get("https://api.nytimes.com/svc/topstories/v2/home.json?&api-key=" + APIKEY, null,
                 new TextHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {

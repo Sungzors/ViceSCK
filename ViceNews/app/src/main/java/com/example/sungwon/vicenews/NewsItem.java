@@ -15,11 +15,5 @@ public class NewsItem {
         this.results = results;
     }
 
-    @Override
-    public String toString() {
-        return "NewsItem{" +
-                "results=" + results[0].getTitle() +
-                "\n" + results[0].getBody() +
-                "\n" + results[0].getUrl() ;
-    }
+
 }

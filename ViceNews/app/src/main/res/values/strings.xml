@@ -8,13 +8,39 @@
     <!-- Strings related to Settings -->
     <string-array name="category_values">
         <item>all</item>
-        <item>nyt</item>
-        <item>iht</item>
+        <item>arts</item>
+        <item>automobile</item>
+        <item>blogs</item>
+        <item>briefing</item>
+        <item>education</item>
+        <item>food</item>
+        <item>health</item>
+        <item>job market</item>
+        <item>movies</item>
+        <item>obituaries</item>
+        <item>opinion</item>
+        <item>science</item>
+        <item>sports</item>
+        <item>technology</item>
+        <item>travel</item>
     </string-array>
     <string-array name="category_titles">
         <item>All</item>
-        <item>New York Times</item>
-        <item>International New York Times</item>
+        <item>Arts</item>
+        <item>Automobile</item>
+        <item>Blogs</item>
+        <item>Briefing</item>
+        <item>Education</item>
+        <item>Food</item>
+        <item>Health</item>
+        <item>Job Market</item>
+        <item>Movies</item>
+        <item>Obituaries</item>
+        <item>Opinion</item>
+        <item>Science</item>
+        <item>Sports</item>
+        <item>Technology</item>
+        <item>Travel</item>
     </string-array>
     <string-array name="category_defaults">
         <item>news</item>
