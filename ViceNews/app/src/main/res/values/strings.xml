@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name">ViceNews</string>
     <string name="action_settings">Settings</string>
@@ -6,28 +7,14 @@
 
     <!-- Strings related to Settings -->
     <string-array name="category_values">
-        <item>news</item>
-        <item>music</item>
-        <item>fashion</item>
-        <item>travel</item>
-        <item>sports</item>
-        <item>health</item>
-        <item>impact</item>
-        <item>tech</item>
-        <item>food</item>
-        <item>gaming</item>
+        <item>all</item>
+        <item>nyt</item>
+        <item>iht</item>
     </string-array>
     <string-array name="category_titles">
-        <item>News</item>
-        <item>Music</item>
-        <item>Fashion</item>
-        <item>Travel</item>
-        <item>Sports</item>
-        <item>Health</item>
-        <item>Impact</item>
-        <item>Tech</item>
-        <item>Food</item>
-        <item>Gaming</item>
+        <item>All</item>
+        <item>New York Times</item>
+        <item>International New York Times</item>
     </string-array>
     <string-array name="category_defaults">
         <item>news</item>
