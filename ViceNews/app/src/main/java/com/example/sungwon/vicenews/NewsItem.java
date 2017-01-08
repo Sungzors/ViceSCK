@@ -19,11 +19,7 @@ public class NewsItem {
     public String toString() {
         return "NewsItem{" +
                 "results=" + results[0].getTitle() +
-                "\n" + results[0].getPreview() +
                 "\n" + results[0].getBody() +
-                "\n" + results[0].getAuthor() +
-                "\n" + results[0].getUrl() +
-                "\n" + results[0].getCategory() +
-                "\n" + results[0].getThumb();
+                "\n" + results[0].getUrl() ;
     }
 }
