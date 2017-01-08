@@ -5,25 +5,25 @@ package com.example.sungwon.vicenews;
  */
 public class NewsItem {
 
-    NewsDetail[] items = new NewsDetail[20];
+    NewsDetail[] results = new NewsDetail[30];
 
-    public NewsDetail[] getItems() {
-        return items;
+    public NewsDetail[] getResults() {
+        return results;
     }
 
-    public void setItems(NewsDetail[] items) {
-        this.items = items;
+    public void setResults(NewsDetail[] results) {
+        this.results = results;
     }
 
     @Override
     public String toString() {
         return "NewsItem{" +
-                "items=" + items[0].getTitle() +
-                "\n" + items[0].getPreview() +
-                "\n" + items[0].getBody() +
-                "\n" + items[0].getAuthor() +
-                "\n" + items[0].getUrl() +
-                "\n" + items[0].getCategory() +
-                "\n" + items[0].getThumb();
+                "results=" + results[0].getTitle() +
+                "\n" + results[0].getPreview() +
+                "\n" + results[0].getBody() +
+                "\n" + results[0].getAuthor() +
+                "\n" + results[0].getUrl() +
+                "\n" + results[0].getCategory() +
+                "\n" + results[0].getThumb();
     }
 }

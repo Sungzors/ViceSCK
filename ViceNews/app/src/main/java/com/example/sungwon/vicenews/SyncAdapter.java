@@ -84,8 +84,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         ContentValues values = new ContentValues();
 //            values.put()
 //            TODOne: do value put based on db
-                        for (int i = 0; i < newsItemArray.getItems().length; i++) {
-                            NewsDetail details = newsItemArray.getItems()[i];
+                        for (int i = 0; i < newsItemArray.getResults().length; i++) {
+                            NewsDetail details = newsItemArray.getResults()[i];
                             values.put("title",details.getTitle());
                             values.put("author",details.getAuthor());
                             values.put("body", details.getBody());
@@ -105,7 +105,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         SyncHttpClient client = new SyncHttpClient();
 
-        client.get("http://vice.com/api/getmostpopular/0", null,
+        client.get("http://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json?&api-key=9a31996473054cef8734182d5811e043", null,
                 new TextHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -119,8 +119,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         ContentValues values = new ContentValues();
 //            values.put()
 //            TODOne: do value put based on db
-                        for (int i = 0; i < newsItemArray.getItems().length; i++) {
-                            NewsDetail details = newsItemArray.getItems()[i];
+                        for (int i = 0; i < 30 || i < newsItemArray.getResults().length; i++) {
+                            NewsDetail details = newsItemArray.getResults()[i];
                             values.put("title",details.getTitle());
                             values.put("author",details.getAuthor());
                             values.put("body", details.getBody());
@@ -154,8 +154,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         ContentValues values = new ContentValues();
 //            values.put()
 //            TODOne: do value put based on db
-                        for (int i = 0; i < newsItemArray.getItems().length; i++) {
-                            NewsDetail details = newsItemArray.getItems()[i];
+                        for (int i = 0; i < newsItemArray.getResults().length; i++) {
+                            NewsDetail details = newsItemArray.getResults()[i];
                             values.put("title", details.getTitle());
                             values.put("author", details.getAuthor());
                             values.put("body", details.getBody());
