@@ -80,17 +80,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, String data) {
-                        SearchResult result = gson.fromJson(data, SearchResult.class);
-                        NewsItem newsItemArray = result.data;
+                        NewsItem newsItemArray = gson.fromJson(data, NewsItem.class);
                         ContentValues values = new ContentValues();
 //            values.put()
 //            TODOne: do value put based on db
                         for (int i = 0; i < newsItemArray.getResults().length; i++) {
                             NewsDetail details = newsItemArray.getResults()[i];
+                            NewsImage[] nimage = details.getMultimedia();
                             values.put("title",details.getTitle());
                             values.put("arturl",details.getUrl());
-                            values.put("smallimgurl", details.getMultimedia()[0].getUrl());
-                            values.put("largeimgurl", details.getMultimedia()[1].getUrl());
+                            values.put("smallimgurl", nimage[0].getUrl());
+                            values.put("largeimgurl", nimage[1].getUrl());
                             mContentResolver.insert(NewsContentProvider.CONTENT_RECENT_URI_FULL, values);
                         }
                     }
@@ -112,8 +112,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, String data) {
-                        SearchResult result = gson.fromJson(data, SearchResult.class);
-                        NewsItem newsItemArray = result.data;
+                        NewsItem newsItemArray = gson.fromJson(data, NewsItem.class);
                         ContentValues values = new ContentValues();
 //            values.put()
 //            TODOne: do value put based on db
@@ -145,8 +144,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, String data) {
-                        SearchResult result = gson.fromJson(data, SearchResult.class);
-                        NewsItem newsItemArray = result.data;
+                        NewsItem newsItemArray = gson.fromJson(data, NewsItem.class);
+//                        NewsItem newsItemArray = result.getData();
                         ContentValues values = new ContentValues();
 //            values.put()
 //            TODOne: do value put based on db

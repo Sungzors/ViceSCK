@@ -6,12 +6,13 @@ package com.example.sungwon.vicenews;
 public class NewsDetail {
     private String title;
     private String url;
+    NewsImage[] multimedia = new NewsImage[2];
 
     public NewsImage[] getMultimedia() {
         return multimedia;
     }
 
-    NewsImage[] multimedia = new NewsImage[2];
+
 
     public String getUrl() {
         return url;

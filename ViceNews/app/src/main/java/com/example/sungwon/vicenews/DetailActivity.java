@@ -1,15 +1,20 @@
 package com.example.sungwon.vicenews;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +24,8 @@ public class DetailActivity extends AppCompatActivity {
 
     TextView mTitleText;
     ImageView mImageView;
+    private static final String TAG = "DetailActivity";
+    private ProgressDialog progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +53,31 @@ public class DetailActivity extends AppCompatActivity {
         String url = intent.getStringExtra("image");
         webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webview.setScrollbarFadingEnabled(false);
-        webview.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        webview.loadData(html, null, null);
+        WebSettings settings = webview.getSettings();
+        settings.setJavaScriptEnabled(true);
         Picasso.with(DetailActivity.this).load(url).fit().into(mImageView);
         mTitleText.setText(title);
 
         setFadeAnimation(webview);
         setScaleAnimation(webview);
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        progressBar = ProgressDialog.show(DetailActivity.this, "WebView Example", "Loading...");
+
+        webview.setWebViewClient(new WebViewClient());
+        webview.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                if(newProgress<100){
+                    Log.d(TAG, String.valueOf(newProgress));
+                } else {
+                    progressBar.dismiss();
+                }
+            }
+
+        });
+        webview.loadUrl(html);
 
 
 //        FloatingActionButton fab_share = (FloatingActionButton) findViewById(R.id.fab_share);

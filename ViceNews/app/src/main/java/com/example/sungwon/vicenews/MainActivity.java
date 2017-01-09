@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     static ContentResolver mResolver;
     private final NewsContentObserver contentObserver = new NewsContentObserver(new Handler());
     static int spanCount = 1;
-    static String catName = "latest";
+    static String catName = "all";
 
     public static final int NOTIFICATION = 1;
 

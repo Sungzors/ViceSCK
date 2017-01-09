@@ -11,9 +11,5 @@ public class SearchResult {
         return data;
     }
 
-    @Override
-    public String toString() {
-        return "SearchResult{" + data.getResults() +
-                '}';
-    }
+
 }
