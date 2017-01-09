@@ -63,7 +63,7 @@ public class DetailActivity extends AppCompatActivity {
 
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-        progressBar = ProgressDialog.show(DetailActivity.this, "WebView Example", "Loading...");
+        progressBar = ProgressDialog.show(DetailActivity.this, "Article Loading...", "Loading...");
 
         webview.setWebViewClient(new WebViewClient());
         webview.setWebChromeClient(new WebChromeClient(){
