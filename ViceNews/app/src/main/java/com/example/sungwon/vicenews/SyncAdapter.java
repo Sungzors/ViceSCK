@@ -136,7 +136,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         SyncHttpClient client = new SyncHttpClient();
 
-        client.get("http://vice.com/api/getlatest/category/" + cat, null,
+        client.get("http://api.nytimes.com/svc/news/v3/content/all/"+ cat +"/24.json?limit=10&api-key=" + APIKEY, null,
                 new TextHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {

@@ -97,7 +97,7 @@ public class RecyclerViewAdapter extends CursorRecyclerViewAdapter<RecyclerViewA
                 int position = ((Integer) view.getTag()).intValue();
                 cursor.moveToPosition(position);
                 String title = cursor.getString(cursor.getColumnIndex(ViceDBHelper.VICENEWS_TITLE));
-                String body = cursor.getString(cursor.getColumnIndex(ViceDBHelper.VICENEWS_BODY));
+                String body = cursor.getString(cursor.getColumnIndex(ViceDBHelper.VICENEWS_AUTHOR));
                 String image = cursor.getString(cursor.getColumnIndex(ViceDBHelper.VICENEWS_THUMBNAIL));
                 intent.putExtra("title", title);
                 intent.putExtra("body", body);
